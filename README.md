@@ -1,7 +1,9 @@
 Mini Proyecto: API de Usuarios con Node.js y MySQL
+
 El objetivo de este mini proyecto es crear una API en Node.js que sirva datos de usuarios en formato JSON, utilizando el módulo http. La API también debe ser capaz de exportar los datos de usuarios a un archivo CSV y de importar datos de usuarios desde un archivo CSV a una base de datos MySQL.
 
-Especificaciones#
+Especificaciones
+
 Ruta /:
 
 Esta ruta muestra un archivo html con una interfaz sencilla al usuario:
