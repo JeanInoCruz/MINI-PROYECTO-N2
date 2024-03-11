@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Proyecto N2</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgb(44, 44, 44);
+      }
+      .mainContainer {
+        width: 80vw;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        color: white;
+      }
+
+      .card-container,
+      .card-container-02,
+      .card-container-03 {
+        width: 200px;
+        height: 300px;
+        position: relative;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .card {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+      }
+
+      .card .front-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .card .front-content p {
+        font-size: 32px;
+        font-weight: 500;
+        opacity: 1;
+        text-align: center;
+        background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .card .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+        background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+        color: #e8e8e8;
+        padding: 20px;
+        line-height: 1.5;
+        border-radius: 5px;
+        pointer-events: none;
+        transform: translateY(96%);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .card .content .heading {
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      .card:hover .content {
+        transform: translateY(0);
+      }
+
+      .card:hover .front-content {
+        transform: translateY(-30%);
+      }
+
+      .card:hover .front-content p {
+        opacity: 0;
+      }
+
+      .onClickContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+      }
+
+         </style>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <h1>Bienvenido a mi Funval-API</h1>
+      <h3>¡Explora el mundo de la programación!</h3>
+      <span>Alumno: Jean Paul Inofuente Cruz - Mini Proyecto N2</span>
+      <div class="onClickContainer">
+        <div class="card-container" id="userList">
+          <div class="card">
+            <div class="front-content">
+              <p>Lista de Usuarios</p>
+            </div>
+            <div class="content">
+              <p class="heading">Lista de Usuarios</p>
+              <p>Esta ruta devolverá una lista de usuarios en formato JSON.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-container-02" id="exportUser">
+          <div class="card">
+            <div class="front-content">
+              <p>Exportar Usuarios</p>
+            </div>
+            <div class="content">
+              <p class="heading">Exportar Usuarios</p>
+              <p>
+                Esta ruta se encargará de exportar los datos de usuarios a un
+                archivo CSV llamado “usuarios.csv”.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-container-03" id="importUser">
+          <div class="card">
+            <div class="front-content">
+              <p>Importar Usuarios</p>
+            </div>
+            <div class="content">
+              <p class="heading">Importar Usuarios</p>
+              <p>
+                Esta ruta se encargará de leer el archivo “usuarios.csv” y
+                guardar los datos en la base de datos MySQL.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script defer>
+      let listaUsuarios = document.getElementById("userList");
+      listaUsuarios.addEventListener("click", function () {
+        window.location.href = "/api/usuarios";
+      });
+      let importarUsuarios = document.getElementById("exportUser");
+      importarUsuarios.addEventListener("click", function () {
+        window.location.href = "/api/usuarios/export";
+      });
+      let exportarUsuarios = document.getElementById("importUser");
+      exportarUsuarios.addEventListener("click", function () {
+        window.location.href = "/api/usuarios/import";
+      });
+    </script>
+  </body>
+</html>
