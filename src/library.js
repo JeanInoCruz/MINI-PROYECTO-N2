@@ -2,6 +2,8 @@ import { pool } from './db.js'
 import path from 'node:path'
 import fs from 'node:fs/promises'
 
+// Funcion para presentar la ruta base y las rutas no encontradas
+
 export const index = async (res) => {
   try {
     const html200 = await readFileFromPath('./public/index.html')
@@ -9,6 +11,19 @@ export const index = async (res) => {
     console.log('Respuesta 200 enviada al cliente.')
   } catch (error) {
     console.error('Error al cargar el archivo index.html:', error)
+    const html500 = await readFileFromPath('./public/500.html')
+    sendResponse(res, 500, html500, 'text/html')
+    console.log('Respuesta 500 enviada al cliente.')
+  }
+}
+
+export const notFound = async (res) => {
+  try {
+    const html404 = await readFileFromPath('./public/404.html')
+    sendResponse(res, 404, html404, 'text/html')
+    console.log('Respuesta 404 enviada al cliente.')
+  } catch (error) {
+    console.error('Error al cargar el archivo 404.html:', error)
     const html500 = await readFileFromPath('./public/500.html')
     sendResponse(res, 500, html500, 'text/html')
     console.log('Respuesta 500 enviada al cliente.')

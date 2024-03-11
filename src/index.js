@@ -1,6 +1,6 @@
 import http from 'http'
 import { PORT } from './config.js'
-import { index, getUsersJSON, exportToCSV, csvImportSQL } from './library.js'
+import { index, getUsersJSON, exportToCSV, csvImportSQL, notFound } from './library.js'
 
 const server = http.createServer(async (req, res) => {
   const { method, url } = req
@@ -24,8 +24,7 @@ const server = http.createServer(async (req, res) => {
         break
 
       default:
-        res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' })
-        res.end('<body style="background-color: rgb(44, 44, 44); color: white; font-family: sans-serif; margin: 20%; text-align: center"><h1>No se encontró la ruta especificada</h1><div class="botones"><a style= "color: white; font-size: 30px" href="/" id="usuarios">Inicio</a></div></body>')
+        notFound(res)
         break
     }
   }
